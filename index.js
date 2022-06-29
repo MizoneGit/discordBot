@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
-const { MessageEmbed } = require("discord.js")
+const dataBosses = require("./bosses.json");
+const bosses = getBosses(dataBosses);
+const { MessageEmbed } = require("discord.js");
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
 const prefix = "+";
@@ -9,19 +11,21 @@ client.on("message", function(message) {
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
 
+    const clientChannel = client.channels.cache.get(config.CHANNEL_ID);
     const commandBody = message.content.slice(prefix.length).trim();
     const args = commandBody.split(' ');
     const command = args.shift().toLowerCase();
 
     if (command === "ping") {
-        const timeTaken = Date.now() - message.createdTimestamp;
-        message.reply(`Pong! This message had a latency of ${timeTaken}ms.`);
+        const date = new Date();
+        const timeTaken = Date.now();
+        message.reply(`Pong! This message had a latency of ${date.getUTCHours(3)}.`);
     }
 
     switch (command) {
         case 'босс':
             if (args.length !== 2) {
-                message.reply('Команда введена неправильно! Попробуй +босс имя время');
+                message.reply('Команда введена неправильно! Попробуй: +босс имя время');
                 break;
             }
 
@@ -29,7 +33,10 @@ client.on("message", function(message) {
             const regExp = new RegExp(regPattern, 'i');
 
             let nameBoss = args?.shift()?.toLowerCase();
-            if (!nameBoss || regExp.test(nameBoss) ) {
+
+            let indexBoss = bosses.findIndex(boss => nameBoss === boss.short.toLowerCase());
+
+            if (!nameBoss || regExp.test(nameBoss) || indexBoss === -1) {
                 message.reply('Имя босса введено неверно!');
                 break;
             }
@@ -42,14 +49,10 @@ client.on("message", function(message) {
 
             let embed = new MessageEmbed()
                 .setTitle('Новый пользователь!')
-                .setColor('#FFFFFF')
+                .setColor('#349afb')
                 .setDescription('@everyone присоединился к серверу!')
-            // <@&991405471858692136> присоединился к серверу!
 
-            let customchanel = client.channels.cache.get('991357865589735608');
-
-            customchanel.send({ embeds: [embed] });
-
+            clientChannel.send({ embeds: [embed] });
 
             break;
         case 'лист':
@@ -66,3 +69,7 @@ client.on("message", function(message) {
 
 
 client.login(config.TOKEN);
+
+function getBosses(dataBosses) {
+    return dataBosses.bosses;
+}

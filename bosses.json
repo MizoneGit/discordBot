@@ -1,0 +1,81 @@
+{
+  "bosses": [
+    {
+      "short": "фел",
+      "ru": "Фелис",
+      "eng": "Felis",
+      "respawn": "3",
+      "chance": "50"
+    },
+    {
+      "short": "браз",
+      "ru": "Бразил",
+      "eng": "Basila",
+      "respawn": "4",
+      "chance": "50"
+    },
+    {
+      "short": "кел",
+      "ru": "Келсус",
+      "eng": "Kelsus",
+      "respawn": "10",
+      "chance": "50"
+    },
+    {
+      "short": "пан",
+      "ru": "Пан Мардор",
+      "eng": "Pan Narod",
+      "respawn": "5",
+      "chance": "50"
+    },
+    {
+      "short": "ландор",
+      "ru": "Ландор",
+      "eng": "Landor",
+      "respawn": "9",
+      "chance": "100"
+    },
+    {
+      "short": "фар",
+      "ru": "Фаробос",
+      "eng": "Tromba",
+      "respawn": "7",
+      "chance": "50"
+    },
+    {
+      "short": "фол",
+      "ru": "Фоллинт",
+      "eng": "Flynt",
+      "respawn": "5",
+      "chance": "33"
+    },
+    {
+      "short": "сус",
+      "ru": "Сусцептор Ядра",
+      "eng": "Core Susceptor",
+      "respawn": "10",
+      "chance": "33"
+    },
+    {
+      "short": "кор",
+      "ru": "Корун",
+      "eng": "Coroon",
+      "respawn": "12",
+      "chance": "100"
+    },
+    {
+      "short": "гла",
+      "ru": "Глаки",
+      "eng": "Glaki",
+      "respawn": "8",
+      "chance": "100"
+    },
+    {
+      "short": "тал",
+      "ru": "Талакин",
+      "eng": "Talakin",
+      "respawn": "10",
+      "chance": "100"
+    }
+  ]
+}
