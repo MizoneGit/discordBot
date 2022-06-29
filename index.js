@@ -40,12 +40,15 @@ client.on("message", function(message) {
                 break;
             }
 
-            let embed = new MessageEmbed();
-            embed.setTitle('Новый пользователь!')
-                .setColor('#ffffff') //Цвет полоски
-                .setDescription('');
+            let embed = new MessageEmbed()
+                .setTitle('Новый пользователь!')
+                .setColor('#FFFFFF')
+                .setDescription('@everyone присоединился к серверу!')
             // <@&991405471858692136> присоединился к серверу!
-            message.channel.send('@everyone присоединился к серверу!', { embed: embed });
+
+            let customchanel = client.channels.cache.get('991357865589735608');
+
+            customchanel.send({ embeds: [embed] });
 
 
             break;
